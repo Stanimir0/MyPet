@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "Galery";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>These are the photos</p>
+
+<div class="gallery">
+	<img src="https://www.dailypaws.com/thmb/B6yWhzGpQZsg3kxMzLn-hvGIF7M=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/siberian-husky-100800827-2000-9449ca147e0e4b819bce5189c2411188.jpg" alt="Husky 1" style="max-width: 300px; margin: 20px 0;"/>
+	<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2-LFKgoiSpUoVR-ZTyuU0YotH8FzGPi1iEQ&s" alt="Husky 2" style="max-width: 300px; margin: 20px 0; " />
+	<img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/Siberian-husky.jpg" alt="Husky 3" style="max-width: 300px; margin: 20px 0; " />
+</div>
+<style>
+	.gallery {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+
+		.gallery img {
+			margin: 10px;
+			border-radius: 8px;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+		}
+
+			.gallery img:hover {
+				transform: scale(1.05);
+				transition: transform 0.3s ease;
+			}
+
+</style>
+<div>
+
+	<a href="Index" class="button-neon" style="margin-top:1rem;">Back</a>
+
+</div>

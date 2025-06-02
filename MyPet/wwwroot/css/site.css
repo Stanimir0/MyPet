@@ -1,0 +1,209 @@
+/* Futuristic Cyberpunk Theme – designed for a "My Pet" website */
+
+/* Root palette */
+:root {
+    /* Neon accents */
+    --neon-pink: #ff006a;
+    --neon-cyan: #00e5ff;
+    --neon-purple: #9b5cff;
+    /* Dark UI chrome */
+    --dark-bg-1: #0b0d10;
+    --dark-bg-2: #111318;
+    --dark-bg-3: #161920;
+    --text-primary: #e0e0e0;
+    --text-secondary: #a0a0a0;
+    --border-radius: 12px;
+    --shadow-neon: 0 0 6px var(--neon-cyan),0 0 12px var(--neon-cyan);
+}
+
+/* Global reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg,var(--dark-bg-1),var(--dark-bg-2) 40%,var(--dark-bg-3));
+    color: var(--text-primary);
+    min-height: 100vh;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--dark-bg-2);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--neon-purple);
+    border-radius: 4px;
+    box-shadow: 0 0 4px var(--neon-purple);
+}
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: var(--neon-pink);
+    }
+
+/* Header */
+header {
+    width: 100%;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(11,13,16,0.6);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid var(--neon-purple);
+}
+
+    header h1 {
+        font-size: 1.8rem;
+        font-weight: 600;
+        background: linear-gradient(90deg,var(--neon-cyan),var(--neon-pink));
+        -webkit-background-clip: text;
+        color: transparent;
+        animation: glitch 2s infinite both;
+    }
+
+@keyframes glitch {
+    0%,100% {
+        text-shadow: 2px 0 var(--neon-pink),-2px 0 var(--neon-cyan);
+    }
+
+    50% {
+        text-shadow: -2px 0 var(--neon-pink),2px 0 var(--neon-cyan);
+    }
+}
+
+nav a {
+    margin-left: 1.2rem;
+    text-decoration: none;
+    color: var(--text-secondary);
+    position: relative;
+    transition: color .2s;
+}
+
+    nav a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -4px;
+        width: 0;
+        height: 2px;
+        background: var(--neon-cyan);
+        transition: width .3s cubic-bezier(.4,0,.2,1);
+    }
+
+    nav a:hover {
+        color: var(--neon-cyan);
+    }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+/* Card component */
+.card {
+    background: rgba(22,25,32,0.8);
+    border: 1px solid var(--dark-bg-3);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-neon);
+    transition: transform .3s;
+}
+
+    .card:hover {
+        transform: translateY(-4px) scale(1.01);
+    }
+
+    /* Pet image */
+    .card img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+        border-radius: var(--border-radius);
+        filter: grayscale(10%) contrast(110%);
+    }
+
+/* Pet info */
+.pet-name {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-top: 1rem;
+    background: linear-gradient(90deg,var(--neon-pink),var(--neon-purple));
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.pet-desc {
+    font-size: .9rem;
+    color: var(--text-secondary);
+    margin: .5rem 0 1rem;
+    line-height: 1.4;
+}
+
+/* Neon button */
+.button-neon {
+    display: inline-block;
+    padding: .6rem 1.4rem;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--neon-cyan);
+    color: var(--neon-cyan);
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: .05em;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: color .3s;
+}
+
+    .button-neon::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: var(--neon-cyan);
+        opacity: .15;
+        transform: skewX(-20deg);
+    }
+
+    .button-neon:hover {
+        color: var(--neon-pink);
+    }
+
+        .button-neon:hover::before {
+            animation: sweep .6s forwards;
+        }
+
+@keyframes sweep {
+    to {
+        left: 100%;
+    }
+}
+
+/* Grid layout */
+.pet-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+    gap: 1.5rem;
+    margin: 2rem;
+}
+
+/* Footer */
+footer {
+    padding: 1rem;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: .8rem;
+    border-top: 1px solid var(--dark-bg-3);
+    margin-top: 4rem;
+}
