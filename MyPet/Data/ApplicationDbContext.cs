@@ -1,15 +1,11 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using MyPet.Models;
 
-namespace MyPet.Data;
-
-public class ApplicationDbContext : IdentityDbContext
+public class ApplicationDbContext : DbContext
 {
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-        : base(options)
-    {
-    }
+        : base(options) { }
 
-public DbSet<MyPet.Models.DogAge> DogAge { get; set; } = default!;
+    public DbSet<Dog> Dogs { get; set; }
+
 }
